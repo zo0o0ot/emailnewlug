@@ -1,3 +1,19 @@
+"""
+Copyright (c) 2012 Mike Putnam <mike@theputnams.net>
+
+Permission to use, copy, modify, and distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+"""
+
 import argparse
 import os
 import smtplib
@@ -8,6 +24,13 @@ from email.MIMEText import MIMEText
 from email.MIMEAudio import MIMEAudio
 from email.MIMEImage import MIMEImage
 from email.Encoders import encode_base64
+
+"""
+Based on http://codecomments.wordpress.com/2008/01/04/python-gmail-smtp-example/
+
+Added argparse bits to move gmail credentials out of the script.
+Hardcoded the schedule and messages into the script.
+"""
 
 def sendMail(u,p,r,subject, text, *attachmentFilePaths):
   gmailUser = u
