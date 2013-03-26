@@ -1,4 +1,7 @@
 """
+Changes to this script were done by Ross Larson in 2013.
+Original copryright message follows:
+
 Copyright (c) 2012 Mike Putnam <mike@theputnams.net>
 
 Permission to use, copy, modify, and distribute this software for any
@@ -81,41 +84,41 @@ def getAttachment(attachmentFilePath):
   attachment.add_header('Content-Disposition', 'attachment',   filename=os.path.basename(attachmentFilePath))
   return attachment
 
-harmony = """
-Open Hack-n-Make!     
-Thursday 6pm-10pm     
-Harmony Cafe 3rd Floor
-233 E College Ave     
-Appleton, WI 54911    
-"""
+meetingNotice = """
+Monthly NEWLUG meeting!     
+Thursday 6:30pm-9pm     
 
-lunch = """
-Makers Lunch Meetup!   
-Friday 11:30am-1:30pm
-Hong Kong Buffet       
-145 W Wisconsin Ave    
-Neenah, WI 54956       
-"""
+Comfort Suites
+3809 W. Wisconsin Ave.
+Appleton, WI, 54914
 
-orgmeeting = """
-Open Organizational Meeting
-Monday 8pm-10pm          
-Cambria Suites Hotel Lobby 
-3940 North Gateway Drive   
-Appleton, WI 54913         
+What to bring:
+
+Bring your own: 
+Computer food.
+Carry-ins of soda, snacks, and other beverages are allowed.  Send an email to the NEWLUG ninjas if you plan on bringing anything to share with the group.
+Linux Devices, Tools and Utilities
+Questions to ask about Linux
+
+The Vision:
+Bringing talented people together -- Accelerating technological
+innovation and encouraging start-up companies in our area.
+
+Open to anyone -- Professionals, Experts, and Students alike.
+
+Further notes about the meeting (subject, presenter, etc.) will come in a separate message.  Hope to see you there!
+
+NEWLUGbot
 """
 
 footer = """
 --                               
 Recurring Monthly Events:        
-* Hack/Make Meetup 1st Thursdays 
-* Makers Lunch Meetup 2nd Fridays
-* Hack/Make Meetup 3rd Thursdays 
-* Org Meeting 4th Mondays        
+* NEWLUG meeting  - 2nd Thursdays      
 """
 
 if __name__=="__main__":
-    parser = argparse.ArgumentParser(description='Send weekly events to dhmn-discuss.')
+    parser = argparse.ArgumentParser(description='Send weekly events to NEWLUG mailing list.')
     parser.add_argument('-u', '--user')
     parser.add_argument('-p', '--password')
     parser.add_argument('recipient')
@@ -125,9 +128,5 @@ if __name__=="__main__":
     d = datetime.date.today()
     mon = d.day #cron runs every monday
     thu = (d + datetime.timedelta(days=3)).day
-    fri = (d + datetime.timedelta(days=4)).day
-    if mon > 21 and mon < 29: sendMail(args.user,args.password,args.recipient,"This Week - Org Meeting(4th Monday)",orgmeeting + footer)
-    if thu > 0  and thu <  8: sendMail(args.user,args.password,args.recipient,"This Week - Hack/Make Meetup(1st Thursday)",harmony + footer)
-    if thu > 14 and thu < 22: sendMail(args.user,args.password,args.recipient,"This Week - Hack/Make Meetup(3rd Thursday)",harmony + footer)
-    if fri > 7  and fri < 15: sendMail(args.user,args.password,args.recipient,"This Week - Lunch Meetup(2nd Friday)",lunch + footer)
+    if thu > 7  and thu <  15: sendMail(args.user,args.password,args.recipient,"This Week - NEWLUG Meeting Notice)", meetingNotice + footer)
 
